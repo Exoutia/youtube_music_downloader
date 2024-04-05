@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app(test_config=None):
@@ -21,9 +21,13 @@ def create_app(test_config=None):
     if not os.path.exists(app.instance_path):
         os.makedirs(app.instance_path)
 
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+
     @app.route("/hello")
-    def hello_world():
-        return "Hello world!"
+    def hello():
+        return "Hello, world!"
 
     from . import music
 
