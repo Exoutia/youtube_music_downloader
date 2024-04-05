@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, 
+from flask import Blueprint, render_template
 
 bp = Blueprint("music", __name__, url_prefix="/music")
 
+
 @bp.route("/")
-def hello_music():
-    return "hello music"
+def index():
+    return render_template("music/index.html")
