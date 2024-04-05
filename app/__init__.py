@@ -24,5 +24,9 @@ def create_app(test_config=None):
     @app.route("/hello")
     def hello_world():
         return "Hello world!"
-    
+
+    from . import music
+
+    app.register_blueprint(music.bp)
+
     return app
